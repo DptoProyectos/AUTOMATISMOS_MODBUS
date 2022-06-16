@@ -4,7 +4,7 @@ ENVIO DE CONFIGURACION REMOTA PARA LOS TABLEROS DE CONTROL CHICO
 
 @author: Yosniel Cabrera
 
-Version 1.0.6 03-06-2022
+Version 1.0.6 16-06-2022
 ''' 
 from datetime import datetime
 from modbusWrite import mbusWrite
@@ -17,7 +17,7 @@ dlgid  = 'CCPERF003'
 CONTROLES_WEB = False                                           # ENABLE para enviar los controles WEBs [True|False]
 
 # SELECCION DE MODO
-WEB_Mode = 100                                                  # Selección de modo [ 100 -> EMERGENCIA | 101 -> AUTOMATICO | 102 -> REMOTO | 103 -> TIMER ]
+WEB_Mode = 103                                                  # Selección de modo [ 100 -> EMERGENCIA | 101 -> AUTOMATICO | 102 -> REMOTO | 103 -> TIMER ]
 
 # MODO AUTOMATICO
 WEB_ActionPump = 101                                            # Accion sobre la bomba [ 100 -> APAGAR | 101 -> PRENDER ]
@@ -30,7 +30,7 @@ WEB_UpDownPressure = 0.6                                        # Consigna que s
 TimerState = True                                               # Setea el estado actual de los timer [True -> Started | False -> Stoped]
 ## T1
 T1_Enable = True                                                # ENABLE para el temporizador 1 [True|False]
-T1_StartHour = 6                                                # Hora de arranque de la bomba [VALUE]
+T1_StartHour = 7                                                # Hora de arranque de la bomba [VALUE]
 T1_StartMin = 0                                                 # Minuto de arranque de la bomba [VALUE]
 T1_StopHour = 21                                                # Hora de apagado de la bomba [VALUE]
 T1_StopMin = 0                                                  # Minuto de apagado de la bomba [VALUE]

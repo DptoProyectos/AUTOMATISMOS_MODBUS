@@ -4,7 +4,7 @@ ENVIO DE CONFIGURACION REMOTA PARA LOS TABLEROS DE CONTROL CHICO
 
 @author: Yosniel Cabrera
 
-Version 1.0.6 03-06-2022
+Version 1.0.6 16-06-2022
 ''' 
 from datetime import datetime
 from modbusWrite import mbusWrite
@@ -16,12 +16,122 @@ dlgid  = 'CCPZ003'
 ########################################## CONTROLES WEB ##########################################
 CONTROLES_WEB = False                                           # ENABLE para enviar los controles WEBs [True|False]
 
-WEB_Mode = 100                                                  # Selección de modo [ 100 -> EMERGENCIA | 101 -> AUTOMATICO | 102 -> REMOTO | 103 -> TIMER ]
+# SELECCION DE MODO
+WEB_Mode = 103                                                  # Selección de modo [ 100 -> EMERGENCIA | 101 -> AUTOMATICO | 102 -> REMOTO | 103 -> TIMER ]
+
+# MODO AUTOMATICO
 WEB_ActionPump = 101                                            # Accion sobre la bomba [ 100 -> APAGAR | 101 -> PRENDER ]
 WEB_LevelMin = 0.5                                              # Nivel minimo a mantener [VALUE]
 WEB_LevelMax = 1.5                                              # Nivel maximo a mantener [VALUE]
 WEB_Frequency = 50                                              # Frecuencia de trabajo [VALUE]
 WEB_UpDownPressure = 0.6                                        # Consigna que se quiere mantener por iteraciones exponenciales [VALUE]
+
+# MODO TIMER
+TimerState = True                                               # Setea el estado actual de los timer [True -> Started | False -> Stoped]
+## T1
+T1_Enable = True                                                # ENABLE para el temporizador 1 [True|False]
+T1_StartHour = 7                                                # Hora de arranque de la bomba [VALUE]
+T1_StartMin = 0                                                 # Minuto de arranque de la bomba [VALUE]
+T1_StopHour = 21                                                # Hora de apagado de la bomba [VALUE]
+T1_StopMin = 0                                                  # Minuto de apagado de la bomba [VALUE]
+T1_weekMon = True                                               # Activacion del timer los lunes [True|False]
+T1_weekTues = True                                              # Activacion del timer los martes [True|False]
+T1_weekWend = True                                              # Activacion del timer los miercoles [True|False]
+T1_weekThurs = True                                             # Activacion del timer los jueves [True|False]
+T1_weekFrid = True                                              # Activacion del timer los viernes [True|False]
+T1_weekSat = True                                               # Activacion del timer los sabado [True|False]
+T1_weekSund = True                                              # Activacion del timer los domingo [True|False]
+## T2
+T2_Enable = False                                               # ENABLE para el temporizador 2 [True|False]
+T2_StartHour = 6                                                # Hora de arranque de la bomba [VALUE]
+T2_StartMin = 30                                                # Minuto de arranque de la bomba [VALUE]
+T2_StopHour = 23                                                # Hora de apagado de la bomba [VALUE]
+T2_StopMin = 30                                                 # Minuto de apagado de la bomba [VALUE]
+T2_weekMon = True                                               # Activacion del timer los lunes [True|False]
+T2_weekTues = True                                              # Activacion del timer los martes [True|False]
+T2_weekWend = True                                              # Activacion del timer los miercoles [True|False]
+T2_weekThurs = True                                             # Activacion del timer los jueves [True|False]
+T2_weekFrid = True                                              # Activacion del timer los viernes [True|False]
+T2_weekSat = True                                               # Activacion del timer los sabado [True|False]
+T2_weekSund = True                                              # Activacion del timer los domingo [True|False]
+## T3
+T3_Enable = False                                               # ENABLE para el temporizador 3 [True|False]
+T3_StartHour = 6                                                # Hora de arranque de la bomba [VALUE]
+T3_StartMin = 30                                                # Minuto de arranque de la bomba [VALUE]
+T3_StopHour = 23                                                # Hora de apagado de la bomba [VALUE]
+T3_StopMin = 30                                                 # Minuto de apagado de la bomba [VALUE]
+T3_weekMon = True                                               # Activacion del timer los lunes [True|False]
+T3_weekTues = True                                              # Activacion del timer los martes [True|False]
+T3_weekWend = True                                              # Activacion del timer los miercoles [True|False]
+T3_weekThurs = True                                             # Activacion del timer los jueves [True|False]
+T3_weekFrid = True                                              # Activacion del timer los viernes [True|False]
+T3_weekSat = True                                               # Activacion del timer los sabado [True|False]
+T3_weekSund = True                                              # Activacion del timer los domingo [True|False]
+## T4
+T4_Enable = False                                               # ENABLE para el temporizador 4 [True|False]
+T4_StartHour = 6                                                # Hora de arranque de la bomba [VALUE]
+T4_StartMin = 30                                                # Minuto de arranque de la bomba [VALUE]
+T4_StopHour = 23                                                # Hora de apagado de la bomba [VALUE]
+T4_StopMin = 30                                                 # Minuto de apagado de la bomba [VALUE]
+T4_weekMon = True                                               # Activacion del timer los lunes [True|False]
+T4_weekTues = True                                              # Activacion del timer los martes [True|False]
+T4_weekWend = True                                              # Activacion del timer los miercoles [True|False]
+T4_weekThurs = True                                             # Activacion del timer los jueves [True|False]
+T4_weekFrid = True                                              # Activacion del timer los viernes [True|False]
+T4_weekSat = True                                               # Activacion del timer los sabado [True|False]
+T4_weekSund = True                                              # Activacion del timer los domingo [True|False]
+## T5
+T5_Enable = False                                               # ENABLE para el temporizador 5 [True|False]
+T5_StartHour = 6                                                # Hora de arranque de la bomba [VALUE]
+T5_StartMin = 30                                                # Minuto de arranque de la bomba [VALUE]
+T5_StopHour = 23                                                # Hora de apagado de la bomba [VALUE]
+T5_StopMin = 30                                                 # Minuto de apagado de la bomba [VALUE]
+T5_weekMon = True                                               # Activacion del timer los lunes [True|False]
+T5_weekTues = True                                              # Activacion del timer los martes [True|False]
+T5_weekWend = True                                              # Activacion del timer los miercoles [True|False]
+T5_weekThurs = True                                             # Activacion del timer los jueves [True|False]
+T5_weekFrid = True                                              # Activacion del timer los viernes [True|False]
+T5_weekSat = True                                               # Activacion del timer los sabado [True|False]
+T5_weekSund = True                                              # Activacion del timer los domingo [True|False]
+## T6
+T6_Enable = False                                               # ENABLE para el temporizador 6 [True|False]
+T6_StartHour = 6                                                # Hora de arranque de la bomba [VALUE]
+T6_StartMin = 30                                                # Minuto de arranque de la bomba [VALUE]
+T6_StopHour = 23                                                # Hora de apagado de la bomba [VALUE]
+T6_StopMin = 30                                                 # Minuto de apagado de la bomba [VALUE]
+T6_weekMon = True                                               # Activacion del timer los lunes [True|False]
+T6_weekTues = True                                              # Activacion del timer los martes [True|False]
+T6_weekWend = True                                              # Activacion del timer los miercoles [True|False]
+T6_weekThurs = True                                             # Activacion del timer los jueves [True|False]
+T6_weekFrid = True                                              # Activacion del timer los viernes [True|False]
+T6_weekSat = True                                               # Activacion del timer los sabado [True|False]
+T6_weekSund = True                                              # Activacion del timer los domingo [True|False]
+##T7
+T7_Enable = False                                               # ENABLE para el temporizador 7 [True|False]
+T7_StartHour = 6                                                # Hora de arranque de la bomba [VALUE]
+T7_StartMin = 30                                                # Minuto de arranque de la bomba [VALUE]
+T7_StopHour = 23                                                # Hora de apagado de la bomba [VALUE]
+T7_StopMin = 30                                                 # Minuto de apagado de la bomba [VALUE]
+T7_weekMon = True                                               # Activacion del timer los lunes [True|False]
+T7_weekTues = True                                              # Activacion del timer los martes [True|False]
+T7_weekWend = True                                              # Activacion del timer los miercoles [True|False]
+T7_weekThurs = True                                             # Activacion del timer los jueves [True|False]
+T7_weekFrid = True                                              # Activacion del timer los viernes [True|False]
+T7_weekSat = True                                               # Activacion del timer los sabado [True|False]
+T7_weekSund = True                                              # Activacion del timer los domingo [True|False]
+## DS
+DS_Enable = False                                               # ENABLE para el temporizador de encendido diario [True|False]
+DS_StartHour = 6                                                # Hora de arranque de la bomba [VALUE]
+DS_StartMin = 30                                                # Minuto de arranque de la bomba [VALUE]
+DS_StopHour = 23                                                # Hora de apagado de la bomba [VALUE]
+DS_StopMin = 30                                                 # Minuto de apagado de la bomba [VALUE]
+DS_weekMon = True                                               # Activacion del timer los lunes [True|False]
+DS_weekTues = True                                              # Activacion del timer los martes [True|False]
+DS_weekWend = True                                              # Activacion del timer los miercoles [True|False]
+DS_weekThurs = True                                             # Activacion del timer los jueves [True|False]
+DS_weekFrid = True                                              # Activacion del timer los viernes [True|False]
+DS_weekSat = True                                               # Activacion del timer los sabado [True|False]
+DS_weekSund = True                                              # Activacion del timer los domingo [True|False]
 
 
 ########################################## REFERENCIAS REMOTAS ##########################################
@@ -32,16 +142,16 @@ SecRef = 1.19                                                   # Referencia rem
 
 
 ########################################## CONFIGURACIONES ##########################################
-CONFIGURACIONES = True                                          # ENABLE para enviar las configuraciones [True|False]             
+CONFIGURACIONES = False                                          # ENABLE para enviar las configuraciones [True|False]             
 
 ### CONTROL
-tipoControl = 2                                                 # Tipo de control [0->NIVELES LLENADO,1->NIVELES VACIADO,2->EXTERNO,3->CONSIGNA CONT]
-referencia = 0                                                  # Referencia a tomar para el control [0->REMOTO,1->AI_0,2->AI_1,3->CNT_0,4->CNT_1,5->BOYAS CONECTADAS EN CNT0 Y CNT1]
+tipoControl = 1                                                 # Tipo de control [0->NIVELES LLENADO,1->NIVELES VACIADO,2->EXTERNO,3->CONSIGNA CONT]
+referencia = 5                                                  # Referencia a tomar para el control [0->REMOTO,1->AI_0,2->AI_1,3->CNT_0,4->CNT_1,5->BOYAS CONECTADAS EN CNT0 Y CNT1]
 
 
 ### ENTRADAS ANALOGICAS
 #### AI0
-AI0_Enab = False                                                # ENABLE para el canal analogico [True|False]
+AI0_Enab = True                                                 # ENABLE para el canal analogico [True|False]
 AI0_Imin = 4                                                    # Corriente minima del canal analogico [VALUE]
 AI0_Imax = 20                                                   # Corriente maxima del canal analogico [VALUE]
 AI0_Mmin = 0                                                    # Magnitud minima del canal analogico [VALUE]
@@ -73,120 +183,6 @@ AO0_Mmax = 50                                                   # valor maximo d
 AO0_OutMmin = 0                                                 # valor minimo de la señal de salida [VALUE]
 AO0_OutMmax = 50                                                # valor maximo de la señal de salida [VALUE]
 
-### TEMPORIZADORES
-TimerState = True                                               # Setea el estado actual de los timer [True -> Started | False -> Stoped]
-
-#### Temporizador 1
-T1_Enable = False                                               # ENABLE para el temporizador 1 [True|False]
-T1_StartHour = 15                                               # Hora de arranque de la bomba [VALUE]
-T1_StartMin = 50                                                # Minuto de arranque de la bomba [VALUE]
-T1_StopHour = 15                                                # Hora de apagado de la bomba [VALUE]
-T1_StopMin = 55                                                 # Minuto de apagado de la bomba [VALUE]
-T1_weekMon = True                                               # Activacion del timer los lunes [True|False]
-T1_weekTues = True                                              # Activacion del timer los martes [True|False]
-T1_weekWend = True                                              # Activacion del timer los miercoles [True|False]
-T1_weekThurs = True                                             # Activacion del timer los jueves [True|False]
-T1_weekFrid = True                                              # Activacion del timer los viernes [True|False]
-T1_weekSat = True                                               # Activacion del timer los sabado [True|False]
-T1_weekSund = True                                              # Activacion del timer los domingo [True|False]
-#
-#### Temporizador 2
-T2_Enable = False                                               # ENABLE para el temporizador 2 [True|False]
-T2_StartHour = 6                                                # Hora de arranque de la bomba [VALUE]
-T2_StartMin = 30                                                # Minuto de arranque de la bomba [VALUE]
-T2_StopHour = 23                                                # Hora de apagado de la bomba [VALUE]
-T2_StopMin = 30                                                 # Minuto de apagado de la bomba [VALUE]
-T2_weekMon = True                                               # Activacion del timer los lunes [True|False]
-T2_weekTues = True                                              # Activacion del timer los martes [True|False]
-T2_weekWend = True                                              # Activacion del timer los miercoles [True|False]
-T2_weekThurs = True                                             # Activacion del timer los jueves [True|False]
-T2_weekFrid = True                                              # Activacion del timer los viernes [True|False]
-T2_weekSat = True                                               # Activacion del timer los sabado [True|False]
-T2_weekSund = True                                              # Activacion del timer los domingo [True|False]
-#
-#### Temporizador 3
-T3_Enable = False                                               # ENABLE para el temporizador 3 [True|False]
-T3_StartHour = 6                                                # Hora de arranque de la bomba [VALUE]
-T3_StartMin = 30                                                # Minuto de arranque de la bomba [VALUE]
-T3_StopHour = 23                                                # Hora de apagado de la bomba [VALUE]
-T3_StopMin = 30                                                 # Minuto de apagado de la bomba [VALUE]
-T3_weekMon = True                                               # Activacion del timer los lunes [True|False]
-T3_weekTues = True                                              # Activacion del timer los martes [True|False]
-T3_weekWend = True                                              # Activacion del timer los miercoles [True|False]
-T3_weekThurs = True                                             # Activacion del timer los jueves [True|False]
-T3_weekFrid = True                                              # Activacion del timer los viernes [True|False]
-T3_weekSat = True                                               # Activacion del timer los sabado [True|False]
-T3_weekSund = True                                              # Activacion del timer los domingo [True|False]
-#
-#### Temporizador 4
-T4_Enable = False                                               # ENABLE para el temporizador 4 [True|False]
-T4_StartHour = 6                                                # Hora de arranque de la bomba [VALUE]
-T4_StartMin = 30                                                # Minuto de arranque de la bomba [VALUE]
-T4_StopHour = 23                                                # Hora de apagado de la bomba [VALUE]
-T4_StopMin = 30                                                 # Minuto de apagado de la bomba [VALUE]
-T4_weekMon = True                                               # Activacion del timer los lunes [True|False]
-T4_weekTues = True                                              # Activacion del timer los martes [True|False]
-T4_weekWend = True                                              # Activacion del timer los miercoles [True|False]
-T4_weekThurs = True                                             # Activacion del timer los jueves [True|False]
-T4_weekFrid = True                                              # Activacion del timer los viernes [True|False]
-T4_weekSat = True                                               # Activacion del timer los sabado [True|False]
-T4_weekSund = True                                              # Activacion del timer los domingo [True|False]
-#
-#### Temporizador 5
-T5_Enable = False                                               # ENABLE para el temporizador 5 [True|False]
-T5_StartHour = 6                                                # Hora de arranque de la bomba [VALUE]
-T5_StartMin = 30                                                # Minuto de arranque de la bomba [VALUE]
-T5_StopHour = 23                                                # Hora de apagado de la bomba [VALUE]
-T5_StopMin = 30                                                 # Minuto de apagado de la bomba [VALUE]
-T5_weekMon = True                                               # Activacion del timer los lunes [True|False]
-T5_weekTues = True                                              # Activacion del timer los martes [True|False]
-T5_weekWend = True                                              # Activacion del timer los miercoles [True|False]
-T5_weekThurs = True                                             # Activacion del timer los jueves [True|False]
-T5_weekFrid = True                                              # Activacion del timer los viernes [True|False]
-T5_weekSat = True                                               # Activacion del timer los sabado [True|False]
-T5_weekSund = True                                              # Activacion del timer los domingo [True|False]
-#
-#### Temporizador 6
-T6_Enable = False                                               # ENABLE para el temporizador 6 [True|False]
-T6_StartHour = 6                                                # Hora de arranque de la bomba [VALUE]
-T6_StartMin = 30                                                # Minuto de arranque de la bomba [VALUE]
-T6_StopHour = 23                                                # Hora de apagado de la bomba [VALUE]
-T6_StopMin = 30                                                 # Minuto de apagado de la bomba [VALUE]
-T6_weekMon = True                                               # Activacion del timer los lunes [True|False]
-T6_weekTues = True                                              # Activacion del timer los martes [True|False]
-T6_weekWend = True                                              # Activacion del timer los miercoles [True|False]
-T6_weekThurs = True                                             # Activacion del timer los jueves [True|False]
-T6_weekFrid = True                                              # Activacion del timer los viernes [True|False]
-T6_weekSat = True                                               # Activacion del timer los sabado [True|False]
-T6_weekSund = True                                              # Activacion del timer los domingo [True|False]
-#
-#### Temporizador 7
-T7_Enable = False                                               # ENABLE para el temporizador 7 [True|False]
-T7_StartHour = 6                                                # Hora de arranque de la bomba [VALUE]
-T7_StartMin = 30                                                # Minuto de arranque de la bomba [VALUE]
-T7_StopHour = 23                                                # Hora de apagado de la bomba [VALUE]
-T7_StopMin = 30                                                 # Minuto de apagado de la bomba [VALUE]
-T7_weekMon = True                                               # Activacion del timer los lunes [True|False]
-T7_weekTues = True                                              # Activacion del timer los martes [True|False]
-T7_weekWend = True                                              # Activacion del timer los miercoles [True|False]
-T7_weekThurs = True                                             # Activacion del timer los jueves [True|False]
-T7_weekFrid = True                                              # Activacion del timer los viernes [True|False]
-T7_weekSat = True                                               # Activacion del timer los sabado [True|False]
-T7_weekSund = True                                              # Activacion del timer los domingo [True|False]
-#
-#### Temporizador encendido diario (Daily Start)
-DS_Enable = False                                               # ENABLE para el temporizador de encendido diario [True|False]
-DS_StartHour = 6                                                # Hora de arranque de la bomba [VALUE]
-DS_StartMin = 30                                                # Minuto de arranque de la bomba [VALUE]
-DS_StopHour = 23                                                # Hora de apagado de la bomba [VALUE]
-DS_StopMin = 30                                                 # Minuto de apagado de la bomba [VALUE]
-DS_weekMon = True                                               # Activacion del timer los lunes [True|False]
-DS_weekTues = True                                              # Activacion del timer los martes [True|False]
-DS_weekWend = True                                              # Activacion del timer los miercoles [True|False]
-DS_weekThurs = True                                             # Activacion del timer los jueves [True|False]
-DS_weekFrid = True                                              # Activacion del timer los viernes [True|False]
-DS_weekSat = True                                               # Activacion del timer los sabado [True|False]
-DS_weekSund = True                                              # Activacion del timer los domingo [True|False]
 
 ### REFERENCIA REMOTA
 #### AJUSTE DE MEDIDA
@@ -213,6 +209,14 @@ Prot1_Recover = 1.5                                             # valor por arri
 ######################################################################################################################################
 #############################################################LOGIC####################################################################
 # ESCRITURA DE REIGSTROS
+## Actualizacion de fecha y hora.
+mbusWrite(dlgid,'2023','interger',(datetime.now().hour))
+mbusWrite(dlgid,'2024','interger',(datetime.now().minute))
+mbusWrite(dlgid,'2030','interger',(datetime.now().day))
+mbusWrite(dlgid,'2027','interger',(datetime.now().month))
+mbusWrite(dlgid,'2028','interger',(datetime.now().year - 2000))
+
+
 ## CONTROLES WEB
 if CONTROLES_WEB:
     mbusWrite(dlgid,'1934','interger',WEB_Mode)
@@ -222,49 +226,6 @@ if CONTROLES_WEB:
     mbusWrite(dlgid,'1959','float',WEB_Frequency)
     mbusWrite(dlgid,'1936','float',WEB_UpDownPressure)
 
-## REFERENCIAS REMOTAS
-if REFERENCIAS_REMOTAS:
-    mbusWrite(dlgid,'1962','float',MainRef)
-    if SecRef: mbusWrite(dlgid,'2032','float',SecRef)
-
-
-## CONFIGURACIONES
-if CONFIGURACIONES:
-    # GENERAL
-    mbusWrite(dlgid,'2023','interger',(datetime.now().hour))
-    mbusWrite(dlgid,'2024','interger',(datetime.now().minute))
-    mbusWrite(dlgid,'2030','interger',(datetime.now().day))
-    mbusWrite(dlgid,'2027','interger',(datetime.now().month))
-    mbusWrite(dlgid,'2028','interger',(datetime.now().year - 2000))
-    # TIPO DE CONTROL
-    mbusWrite(dlgid,'1961','interger',tipoControl)
-    mbusWrite(dlgid,'1978','interger',referencia)
-    ### ENTRADAS ANALOGICAS
-    mbusWrite(dlgid,'1968','interger',AI0_Imin)
-    mbusWrite(dlgid,'1969','interger',AI0_Imax)
-    mbusWrite(dlgid,'1942','float',AI0_Mmin)
-    mbusWrite(dlgid,'1944','float',AI0_Mmax)
-    mbusWrite(dlgid,'2043','float',AI0_Offset)
-    mbusWrite(dlgid,'1970','interger',AI1_Imin)
-    mbusWrite(dlgid,'1971','interger',AI1_Imax)
-    mbusWrite(dlgid,'1946','float',AI1_Mmin)
-    mbusWrite(dlgid,'1948','float',AI1_Mmax)
-    mbusWrite(dlgid,'2045','float',AI1_Offset)
-    
-    ### ENTRADAS DE PULSOS
-    mbusWrite(dlgid,'1950','interger',CNT0_timeOn)
-    mbusWrite(dlgid,'1951','interger',CNT0_timeOff)
-    mbusWrite(dlgid,'1952','float',CNT0_magpp)
-    mbusWrite(dlgid,'1966','interger',CNT1_timeOn)
-    mbusWrite(dlgid,'1967','interger',CNT1_timeOff)
-    mbusWrite(dlgid,'1964','float',CNT1_magpp)
-    
-    ### SALIDAS ANALOGIAS
-    mbusWrite(dlgid,'1974','float',AO0_Mmin)
-    mbusWrite(dlgid,'1976','float',AO0_Mmax)
-    mbusWrite(dlgid,'1972','interger',AO0_OutMmin)
-    mbusWrite(dlgid,'1973','interger',AO0_OutMmax)
-    
     ### TEMPORIZADORES
     mbusWrite(dlgid,'1982','interger',int('{7}{6}{5}{4}{3}{2}{1}{0}'.format(int(T1_Enable == True),int(T2_Enable == True),int(T3_Enable == True),int(T4_Enable == True),int(T5_Enable == True),int(T6_Enable == True),int(T7_Enable == True),int(DS_Enable == True)),2))
     mbusWrite(dlgid,'1983','interger',int('{7}{6}{5}{4}{3}{2}{1}{0}'.format(int(T1_weekMon == True),int(T1_weekTues == True),int(T1_weekWend == True),int(T1_weekThurs == True),int(T1_weekFrid == True),int(T1_weekSat == True),int(T1_weekSund == True),0),2))
@@ -308,6 +269,46 @@ if CONFIGURACIONES:
     mbusWrite(dlgid,'2021','interger',DS_StopHour)
     mbusWrite(dlgid,'2022','interger',DS_StopMin)
 
+
+## REFERENCIAS REMOTAS
+if REFERENCIAS_REMOTAS:
+    mbusWrite(dlgid,'1962','float',MainRef)
+    if SecRef: mbusWrite(dlgid,'2032','float',SecRef)
+
+
+## CONFIGURACIONES
+if CONFIGURACIONES:
+    # GENERAL
+    # TIPO DE CONTROL
+    mbusWrite(dlgid,'1961','interger',tipoControl)
+    mbusWrite(dlgid,'1978','interger',referencia)
+    ### ENTRADAS ANALOGICAS
+    mbusWrite(dlgid,'1968','interger',AI0_Imin)
+    mbusWrite(dlgid,'1969','interger',AI0_Imax)
+    mbusWrite(dlgid,'1942','float',AI0_Mmin)
+    mbusWrite(dlgid,'1944','float',AI0_Mmax)
+    mbusWrite(dlgid,'2043','float',AI0_Offset)
+    mbusWrite(dlgid,'1970','interger',AI1_Imin)
+    mbusWrite(dlgid,'1971','interger',AI1_Imax)
+    mbusWrite(dlgid,'1946','float',AI1_Mmin)
+    mbusWrite(dlgid,'1948','float',AI1_Mmax)
+    mbusWrite(dlgid,'2045','float',AI1_Offset)
+    
+    ### ENTRADAS DE PULSOS
+    mbusWrite(dlgid,'1950','interger',CNT0_timeOn)
+    mbusWrite(dlgid,'1951','interger',CNT0_timeOff)
+    mbusWrite(dlgid,'1952','float',CNT0_magpp)
+    mbusWrite(dlgid,'1966','interger',CNT1_timeOn)
+    mbusWrite(dlgid,'1967','interger',CNT1_timeOff)
+    mbusWrite(dlgid,'1964','float',CNT1_magpp)
+    
+    ### SALIDAS ANALOGIAS
+    mbusWrite(dlgid,'1974','float',AO0_Mmin)
+    mbusWrite(dlgid,'1976','float',AO0_Mmax)
+    mbusWrite(dlgid,'1972','interger',AO0_OutMmin)
+    mbusWrite(dlgid,'1973','interger',AO0_OutMmax)
+    
+    
     
     # REFERENCIA REMOTA
     mbusWrite(dlgid,'2055','float',Ref1Fact)
@@ -325,10 +326,6 @@ if CONFIGURACIONES:
     mbusWrite(dlgid,'1979','interger',Prot1_Ref)
     mbusWrite(dlgid,'2061','float',Prot1_Recover)
     
-
-
-    
-
 
 
 
