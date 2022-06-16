@@ -10,7 +10,7 @@ from datetime import datetime
 from modbusWrite import mbusWrite
 
 
-dlgid  = 'CCPZ002'
+dlgid  = 'CCPERF005'
 
 #
 ########################################## CONTROLES WEB ##########################################
@@ -41,7 +41,7 @@ referencia = 0                                                  # Referencia a t
 
 ### ENTRADAS ANALOGICAS
 #### AI0
-AI0_Enab = False                                                # ENABLE para el canal analogico [True|False]
+AI0_Enab = True                                                # ENABLE para el canal analogico [True|False]
 AI0_Imin = 4                                                    # Corriente minima del canal analogico [VALUE]
 AI0_Imax = 20                                                   # Corriente maxima del canal analogico [VALUE]
 AI0_Mmin = 0                                                    # Magnitud minima del canal analogico [VALUE]
@@ -324,6 +324,7 @@ if CONFIGURACIONES:
     mbusWrite(dlgid,'2059','float',Prot1_Stop)
     mbusWrite(dlgid,'1979','interger',Prot1_Ref)
     mbusWrite(dlgid,'2061','float',Prot1_Recover)
+    
 
 
 

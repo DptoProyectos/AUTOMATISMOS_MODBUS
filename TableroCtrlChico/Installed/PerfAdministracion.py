@@ -10,7 +10,7 @@ from datetime import datetime
 from modbusWrite import mbusWrite
 
 
-dlgid  = 'CCPZ002'
+dlgid  = 'CCPERF002'
 
 #
 ########################################## CONTROLES WEB ##########################################
@@ -41,7 +41,7 @@ referencia = 0                                                  # Referencia a t
 
 ### ENTRADAS ANALOGICAS
 #### AI0
-AI0_Enab = False                                                # ENABLE para el canal analogico [True|False]
+AI0_Enab = True                                                 # ENABLE para el canal analogico [True|False]
 AI0_Imin = 4                                                    # Corriente minima del canal analogico [VALUE]
 AI0_Imax = 20                                                   # Corriente maxima del canal analogico [VALUE]
 AI0_Mmin = 0                                                    # Magnitud minima del canal analogico [VALUE]
@@ -78,10 +78,10 @@ TimerState = True                                               # Setea el estad
 
 #### Temporizador 1
 T1_Enable = True                                                # ENABLE para el temporizador 1 [True|False]
-T1_StartHour = 15                                               # Hora de arranque de la bomba [VALUE]
-T1_StartMin = 50                                                # Minuto de arranque de la bomba [VALUE]
-T1_StopHour = 15                                                # Hora de apagado de la bomba [VALUE]
-T1_StopMin = 55                                                 # Minuto de apagado de la bomba [VALUE]
+T1_StartHour = 6                                                # Hora de arranque de la bomba [VALUE]
+T1_StartMin = 0                                                 # Minuto de arranque de la bomba [VALUE]
+T1_StopHour = 21                                                # Hora de apagado de la bomba [VALUE]
+T1_StopMin = 0                                                  # Minuto de apagado de la bomba [VALUE]
 T1_weekMon = True                                               # Activacion del timer los lunes [True|False]
 T1_weekTues = True                                              # Activacion del timer los martes [True|False]
 T1_weekWend = True                                              # Activacion del timer los miercoles [True|False]
@@ -93,9 +93,9 @@ T1_weekSund = True                                              # Activacion del
 #### Temporizador 2
 T2_Enable = False                                               # ENABLE para el temporizador 2 [True|False]
 T2_StartHour = 6                                                # Hora de arranque de la bomba [VALUE]
-T2_StartMin = 30                                                # Minuto de arranque de la bomba [VALUE]
-T2_StopHour = 23                                                # Hora de apagado de la bomba [VALUE]
-T2_StopMin = 30                                                 # Minuto de apagado de la bomba [VALUE]
+T2_StartMin = 0                                                 # Minuto de arranque de la bomba [VALUE]
+T2_StopHour = 21                                                # Hora de apagado de la bomba [VALUE]
+T2_StopMin = 0                                                  # Minuto de apagado de la bomba [VALUE]
 T2_weekMon = True                                               # Activacion del timer los lunes [True|False]
 T2_weekTues = True                                              # Activacion del timer los martes [True|False]
 T2_weekWend = True                                              # Activacion del timer los miercoles [True|False]
@@ -324,6 +324,8 @@ if CONFIGURACIONES:
     mbusWrite(dlgid,'2059','float',Prot1_Stop)
     mbusWrite(dlgid,'1979','interger',Prot1_Ref)
     mbusWrite(dlgid,'2061','float',Prot1_Recover)
+    
+
 
 
 

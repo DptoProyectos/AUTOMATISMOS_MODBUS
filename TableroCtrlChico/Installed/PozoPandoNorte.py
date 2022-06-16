@@ -4,13 +4,13 @@ ENVIO DE CONFIGURACION REMOTA PARA LOS TABLEROS DE CONTROL CHICO
 
 @author: Yosniel Cabrera
 
-Version 1.0.4 09-05-2022
+Version 1.0.6 03-06-2022
 ''' 
 from datetime import datetime
 from modbusWrite import mbusWrite
 
 
-dlgid  = 'CCPZ001'
+dlgid  = 'CCPZ009'
 
 #
 ########################################## CONTROLES WEB ##########################################
@@ -35,8 +35,8 @@ SecRef = 1.19                                                   # Referencia rem
 CONFIGURACIONES = True                                          # ENABLE para enviar las configuraciones [True|False]             
 
 ### CONTROL
-tipoControl = 1                                                 # Tipo de control [0->NIVELES LLENADO,1->NIVELES VACIADO,2->EXTERNO,3->CONSIGNA CONT]
-referencia = 5                                                  # Referencia a tomar para el control [0->REMOTO,1->AI_0,2->AI_1,3->CNT_0,4->CNT_1,5->BOYAS CONECTADAS EN CNT0 Y CNT1]
+tipoControl = 2                                                 # Tipo de control [0->NIVELES LLENADO,1->NIVELES VACIADO,2->EXTERNO,3->CONSIGNA CONT]
+referencia = 0                                                  # Referencia a tomar para el control [0->REMOTO,1->AI_0,2->AI_1,3->CNT_0,4->CNT_1,5->BOYAS CONECTADAS EN CNT0 Y CNT1]
 
 
 ### ENTRADAS ANALOGICAS
@@ -74,6 +74,8 @@ AO0_OutMmin = 0                                                 # valor minimo d
 AO0_OutMmax = 50                                                # valor maximo de la señal de salida [VALUE]
 
 ### TEMPORIZADORES
+TimerState = True                                               # Setea el estado actual de los timer [True -> Started | False -> Stoped]
+
 #### Temporizador 1
 T1_Enable = False                                               # ENABLE para el temporizador 1 [True|False]
 T1_StartHour = 6                                                # Hora de arranque de la bomba [VALUE]
@@ -318,11 +320,12 @@ if CONFIGURACIONES:
     mbusWrite(dlgid,'2041','float',Ref2MaxValue)
 
     ### PROTECCIONES
-    mbusWrite(dlgid,'1925','interger',int('{2}{1}{0}'.format(int(AI0_Enab == True),int(AI1_Enab == True),int(Prot1_Enable == True)),2))
+    mbusWrite(dlgid,'1925','interger',int('{3}{2}{1}{0}'.format(int(AI0_Enab == True),int(AI1_Enab == True),int(Prot1_Enable == True),int(TimerState == True)),2)) 
     mbusWrite(dlgid,'2059','float',Prot1_Stop)
     mbusWrite(dlgid,'1979','interger',Prot1_Ref)
     mbusWrite(dlgid,'2061','float',Prot1_Recover)
     
+
 
 
 

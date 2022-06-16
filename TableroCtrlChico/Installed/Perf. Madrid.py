@@ -4,7 +4,7 @@ ENVIO DE CONFIGURACION REMOTA PARA LOS TABLEROS DE CONTROL CHICO
 
 @author: Yosniel Cabrera
 
-Version 1.0.5 09-05-2022
+Version 1.0.6 03-06-2022
 ''' 
 from datetime import datetime
 from modbusWrite import mbusWrite
@@ -74,6 +74,8 @@ AO0_OutMmin = 0                                                 # valor minimo d
 AO0_OutMmax = 50                                                # valor maximo de la señal de salida [VALUE]
 
 ### TEMPORIZADORES
+TimerState = True                                               # Setea el estado actual de los timer [True -> Started | False -> Stoped]
+
 #### Temporizador 1
 T1_Enable = True                                                # ENABLE para el temporizador 1 [True|False]
 T1_StartHour = 15                                               # Hora de arranque de la bomba [VALUE]
@@ -318,12 +320,11 @@ if CONFIGURACIONES:
     mbusWrite(dlgid,'2041','float',Ref2MaxValue)
 
     ### PROTECCIONES
-    mbusWrite(dlgid,'1925','interger',int('{2}{1}{0}'.format(int(AI0_Enab == True),int(AI1_Enab == True),int(Prot1_Enable == True)),2))
+    mbusWrite(dlgid,'1925','interger',int('{3}{2}{1}{0}'.format(int(AI0_Enab == True),int(AI1_Enab == True),int(Prot1_Enable == True),int(TimerState == True)),2)) 
     mbusWrite(dlgid,'2059','float',Prot1_Stop)
     mbusWrite(dlgid,'1979','interger',Prot1_Ref)
     mbusWrite(dlgid,'2061','float',Prot1_Recover)
     
-
 
 
 

@@ -4,20 +4,20 @@ ENVIO DE CONFIGURACION REMOTA PARA LOS TABLEROS DE CONTROL CHICO
 
 @author: Yosniel Cabrera
 
-Version 1.0.4 09-05-2022
+Version 1.0.6 03-06-2022
 ''' 
 from datetime import datetime
 from modbusWrite import mbusWrite
 
 
-dlgid  = 'CCPZ002'
+dlgid  = 'CCPZ004'
 
 #
 ########################################## CONTROLES WEB ##########################################
 CONTROLES_WEB = False                                           # ENABLE para enviar los controles WEBs [True|False]
 
-WEB_Mode = 100                                                  # Selección de modo [100 -> EMERGENCIA | 101 -> AUTOMATICO | 102 -REMOTO]
-WEB_ActionPump = 101                                            # Accion sobre la bomba [100 -> APAGAR | 101 -> PRENDER]
+WEB_Mode = 100                                                  # Selección de modo [ 100 -> EMERGENCIA | 101 -> AUTOMATICO | 102 -> REMOTO | 103 -> TIMER ]
+WEB_ActionPump = 101                                            # Accion sobre la bomba [ 100 -> APAGAR | 101 -> PRENDER ]
 WEB_LevelMin = 0.5                                              # Nivel minimo a mantener [VALUE]
 WEB_LevelMax = 1.5                                              # Nivel maximo a mantener [VALUE]
 WEB_Frequency = 50                                              # Frecuencia de trabajo [VALUE]
@@ -35,8 +35,8 @@ SecRef = 1.19                                                   # Referencia rem
 CONFIGURACIONES = True                                          # ENABLE para enviar las configuraciones [True|False]             
 
 ### CONTROL
-tipoControl = 1                                                 # Tipo de control [0->NIVELES LLENADO,1->NIVELES VACIADO,2->EXTERNO,3->CONSIGNA CONT]
-referencia = 5                                                  # Referencia a tomar para el control [0->REMOTO,1->AI_0,2->AI_1,3->CNT_0,4->CNT_1,5->BOYAS CONECTADAS EN CNT0 Y CNT1]
+tipoControl = 2                                                 # Tipo de control [0->NIVELES LLENADO,1->NIVELES VACIADO,2->EXTERNO,3->CONSIGNA CONT]
+referencia = 0                                                  # Referencia a tomar para el control [0->REMOTO,1->AI_0,2->AI_1,3->CNT_0,4->CNT_1,5->BOYAS CONECTADAS EN CNT0 Y CNT1]
 
 
 ### ENTRADAS ANALOGICAS
@@ -74,12 +74,14 @@ AO0_OutMmin = 0                                                 # valor minimo d
 AO0_OutMmax = 50                                                # valor maximo de la señal de salida [VALUE]
 
 ### TEMPORIZADORES
+TimerState = True                                               # Setea el estado actual de los timer [True -> Started | False -> Stoped]
+
 #### Temporizador 1
-T1_Enable = False                                               # ENABLE para el temporizador 1 [True|False]
-T1_StartHour = 6                                                # Hora de arranque de la bomba [VALUE]
-T1_StartMin = 30                                                # Minuto de arranque de la bomba [VALUE]
-T1_StopHour = 23                                                # Hora de apagado de la bomba [VALUE]
-T1_StopMin = 30                                                 # Minuto de apagado de la bomba [VALUE]
+T1_Enable = True                                                # ENABLE para el temporizador 1 [True|False]
+T1_StartHour = 15                                               # Hora de arranque de la bomba [VALUE]
+T1_StartMin = 50                                                # Minuto de arranque de la bomba [VALUE]
+T1_StopHour = 15                                                # Hora de apagado de la bomba [VALUE]
+T1_StopMin = 55                                                 # Minuto de apagado de la bomba [VALUE]
 T1_weekMon = True                                               # Activacion del timer los lunes [True|False]
 T1_weekTues = True                                              # Activacion del timer los martes [True|False]
 T1_weekWend = True                                              # Activacion del timer los miercoles [True|False]
@@ -229,11 +231,11 @@ if REFERENCIAS_REMOTAS:
 ## CONFIGURACIONES
 if CONFIGURACIONES:
     # GENERAL
-    mbusWrite(dlgid,'2023','float',(datetime.now().hour))
-    mbusWrite(dlgid,'2024','float',(datetime.now().minute))
-    mbusWrite(dlgid,'2030','float',(datetime.now().day))
-    mbusWrite(dlgid,'2027','float',(datetime.now().month))
-    mbusWrite(dlgid,'2028','float',(datetime.now().year - 2000))
+    mbusWrite(dlgid,'2023','interger',(datetime.now().hour))
+    mbusWrite(dlgid,'2024','interger',(datetime.now().minute))
+    mbusWrite(dlgid,'2030','interger',(datetime.now().day))
+    mbusWrite(dlgid,'2027','interger',(datetime.now().month))
+    mbusWrite(dlgid,'2028','interger',(datetime.now().year - 2000))
     # TIPO DE CONTROL
     mbusWrite(dlgid,'1961','interger',tipoControl)
     mbusWrite(dlgid,'1978','interger',referencia)
@@ -318,11 +320,12 @@ if CONFIGURACIONES:
     mbusWrite(dlgid,'2041','float',Ref2MaxValue)
 
     ### PROTECCIONES
-    mbusWrite(dlgid,'1925','interger',int('{2}{1}{0}'.format(int(AI0_Enab == True),int(AI1_Enab == True),int(Prot1_Enable == True)),2))
+    mbusWrite(dlgid,'1925','interger',int('{3}{2}{1}{0}'.format(int(AI0_Enab == True),int(AI1_Enab == True),int(Prot1_Enable == True),int(TimerState == True)),2)) 
     mbusWrite(dlgid,'2059','float',Prot1_Stop)
     mbusWrite(dlgid,'1979','interger',Prot1_Ref)
     mbusWrite(dlgid,'2061','float',Prot1_Recover)
     
+
 
 
 
