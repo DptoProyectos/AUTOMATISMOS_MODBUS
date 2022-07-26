@@ -145,8 +145,8 @@ SecRef = 1.19                                                   # Referencia rem
 CONFIGURACIONES = False                                          # ENABLE para enviar las configuraciones [True|False]             
 
 ### CONTROL
-tipoControl = 0                                                 # Tipo de control [0->NIVELES LLENADO,1->NIVELES VACIADO,2->EXTERNO,3->CONSIGNA CONT]
-referencia = 0                                                  # Referencia a tomar para el control [0->REMOTO,1->AI_0,2->AI_1,3->CNT_0,4->CNT_1,5->BOYAS CONECTADAS EN CNT0 Y CNT1]
+tipoControl = 1                                                 # Tipo de control [0->NIVELES LLENADO,1->NIVELES VACIADO,2->EXTERNO,3->CONSIGNA CONT]
+referencia = 5                                                  # Referencia a tomar para el control [0->REMOTO,1->AI_0,2->AI_1,3->CNT_0,4->CNT_1,5->BOYAS CONECTADAS EN CNT0 Y CNT1]
 
 
 ### ENTRADAS ANALOGICAS

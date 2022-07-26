@@ -10,11 +10,11 @@ from datetime import datetime
 from modbusWrite import mbusWrite
 
 
-dlgid  = 'CCPERF003'
+dlgid  = 'YCHTEST'
 
 #
 ########################################## CONTROLES WEB ##########################################
-CONTROLES_WEB = False                                           # ENABLE para enviar los controles WEBs [True|False]
+CONTROLES_WEB = True                                           # ENABLE para enviar los controles WEBs [True|False]
 
 # SELECCION DE MODO
 WEB_Mode = 103                                                  # Selección de modo [ 100 -> EMERGENCIA | 101 -> AUTOMATICO | 102 -> REMOTO | 103 -> TIMER ]
@@ -142,7 +142,7 @@ SecRef = 1.19                                                   # Referencia rem
 
 
 ########################################## CONFIGURACIONES ##########################################
-CONFIGURACIONES = False                                          # ENABLE para enviar las configuraciones [True|False]             
+CONFIGURACIONES = True                                          # ENABLE para enviar las configuraciones [True|False]             
 
 ### CONTROL
 tipoControl = 0                                                 # Tipo de control [0->NIVELES LLENADO,1->NIVELES VACIADO,2->EXTERNO,3->CONSIGNA CONT]
@@ -210,125 +210,126 @@ Prot1_Recover = 1.5                                             # valor por arri
 #############################################################LOGIC####################################################################
 # ESCRITURA DE REIGSTROS
 ## Actualizacion de fecha y hora.
-mbusWrite(dlgid,'2023','interger',(datetime.now().hour))
-mbusWrite(dlgid,'2024','interger',(datetime.now().minute))
-mbusWrite(dlgid,'2030','interger',(datetime.now().day))
-mbusWrite(dlgid,'2027','interger',(datetime.now().month))
-mbusWrite(dlgid,'2028','interger',(datetime.now().year - 2000))
+# mbusWrite(dlgid,'2023','interger',(datetime.now().hour))
+# mbusWrite(dlgid,'2024','interger',(datetime.now().minute))
+# mbusWrite(dlgid,'2030','interger',(datetime.now().day))
+# mbusWrite(dlgid,'2027','interger',(datetime.now().month))
+# mbusWrite(dlgid,'2028','interger',(datetime.now().year - 2000))
 
 
-## CONTROLES WEB
-if CONTROLES_WEB:
-    mbusWrite(dlgid,'1934','interger',WEB_Mode)
-    mbusWrite(dlgid,'1935','interger',WEB_ActionPump)
-    mbusWrite(dlgid,'1955','float',WEB_LevelMin)
-    mbusWrite(dlgid,'1957','float',WEB_LevelMax)
-    mbusWrite(dlgid,'1959','float',WEB_Frequency)
-    mbusWrite(dlgid,'1936','float',WEB_UpDownPressure)
+# ## CONTROLES WEB
+# if CONTROLES_WEB:
+#     mbusWrite(dlgid,'1934','interger',WEB_Mode)
+#     mbusWrite(dlgid,'1935','interger',WEB_ActionPump)
+#     mbusWrite(dlgid,'1955','float',WEB_LevelMin)
+#     mbusWrite(dlgid,'1957','float',WEB_LevelMax)
+#     mbusWrite(dlgid,'1959','float',WEB_Frequency)
+#     mbusWrite(dlgid,'1936','float',WEB_UpDownPressure)
 
-    ### TEMPORIZADORES
-    mbusWrite(dlgid,'1982','interger',int('{7}{6}{5}{4}{3}{2}{1}{0}'.format(int(T1_Enable == True),int(T2_Enable == True),int(T3_Enable == True),int(T4_Enable == True),int(T5_Enable == True),int(T6_Enable == True),int(T7_Enable == True),int(DS_Enable == True)),2))
-    mbusWrite(dlgid,'1983','interger',int('{7}{6}{5}{4}{3}{2}{1}{0}'.format(int(T1_weekMon == True),int(T1_weekTues == True),int(T1_weekWend == True),int(T1_weekThurs == True),int(T1_weekFrid == True),int(T1_weekSat == True),int(T1_weekSund == True),0),2))
-    mbusWrite(dlgid,'1984','interger',int('{7}{6}{5}{4}{3}{2}{1}{0}'.format(int(T2_weekMon == True),int(T2_weekTues == True),int(T2_weekWend == True),int(T2_weekThurs == True),int(T2_weekFrid == True),int(T2_weekSat == True),int(T2_weekSund == True),0),2))
-    mbusWrite(dlgid,'1985','interger',int('{7}{6}{5}{4}{3}{2}{1}{0}'.format(int(T3_weekMon == True),int(T3_weekTues == True),int(T3_weekWend == True),int(T3_weekThurs == True),int(T3_weekFrid == True),int(T3_weekSat == True),int(T3_weekSund == True),0),2))
-    mbusWrite(dlgid,'1986','interger',int('{7}{6}{5}{4}{3}{2}{1}{0}'.format(int(T4_weekMon == True),int(T4_weekTues == True),int(T4_weekWend == True),int(T4_weekThurs == True),int(T4_weekFrid == True),int(T4_weekSat == True),int(T4_weekSund == True),0),2))
-    mbusWrite(dlgid,'1987','interger',int('{7}{6}{5}{4}{3}{2}{1}{0}'.format(int(T5_weekMon == True),int(T5_weekTues == True),int(T5_weekWend == True),int(T5_weekThurs == True),int(T5_weekFrid == True),int(T5_weekSat == True),int(T5_weekSund == True),0),2))
-    mbusWrite(dlgid,'1988','interger',int('{7}{6}{5}{4}{3}{2}{1}{0}'.format(int(T6_weekMon == True),int(T6_weekTues == True),int(T6_weekWend == True),int(T6_weekThurs == True),int(T6_weekFrid == True),int(T6_weekSat == True),int(T6_weekSund == True),0),2))
-    mbusWrite(dlgid,'1989','interger',int('{7}{6}{5}{4}{3}{2}{1}{0}'.format(int(T7_weekMon == True),int(T7_weekTues == True),int(T7_weekWend == True),int(T7_weekThurs == True),int(T7_weekFrid == True),int(T7_weekSat == True),int(T7_weekSund == True),0),2))
-    mbusWrite(dlgid,'1990','interger',int('{7}{6}{5}{4}{3}{2}{1}{0}'.format(int(DS_weekMon == True),int(DS_weekTues == True),int(DS_weekWend == True),int(DS_weekThurs == True),int(DS_weekFrid == True),int(DS_weekSat == True),int(DS_weekSund == True),0),2))
-    mbusWrite(dlgid,'1991','interger',T1_StartHour)
-    mbusWrite(dlgid,'1992','interger',T1_StartMin)
-    mbusWrite(dlgid,'1993','interger',T1_StopHour)
-    mbusWrite(dlgid,'1994','interger',T1_StopMin)
-    mbusWrite(dlgid,'1995','interger',T2_StartHour)
-    mbusWrite(dlgid,'1996','interger',T2_StartMin)
-    mbusWrite(dlgid,'1997','interger',T2_StopHour)
-    mbusWrite(dlgid,'1998','interger',T2_StopMin)
-    mbusWrite(dlgid,'1999','interger',T3_StartHour)
-    mbusWrite(dlgid,'2000','interger',T3_StartMin)
-    mbusWrite(dlgid,'2001','interger',T3_StopHour)
-    mbusWrite(dlgid,'2002','interger',T3_StopMin)
-    mbusWrite(dlgid,'2003','interger',T4_StartHour)
-    mbusWrite(dlgid,'2004','interger',T4_StartMin)
-    mbusWrite(dlgid,'2005','interger',T4_StopHour)
-    mbusWrite(dlgid,'2006','interger',T4_StopMin)
-    mbusWrite(dlgid,'2007','interger',T5_StartHour)
-    mbusWrite(dlgid,'2008','interger',T5_StartMin)
-    mbusWrite(dlgid,'2009','interger',T5_StopHour)
-    mbusWrite(dlgid,'2010','interger',T5_StopMin)
-    mbusWrite(dlgid,'2011','interger',T6_StartHour)
-    mbusWrite(dlgid,'2012','interger',T6_StartMin)
-    mbusWrite(dlgid,'2013','interger',T6_StopHour)
-    mbusWrite(dlgid,'2014','interger',T6_StopMin)
-    mbusWrite(dlgid,'2015','interger',T7_StartHour)
-    mbusWrite(dlgid,'2016','interger',T7_StartMin)
-    mbusWrite(dlgid,'2017','interger',T7_StopHour)
-    mbusWrite(dlgid,'2018','interger',T7_StopMin)
-    mbusWrite(dlgid,'2019','interger',DS_StartHour)
-    mbusWrite(dlgid,'2020','interger',DS_StartMin)
-    mbusWrite(dlgid,'2021','interger',DS_StopHour)
-    mbusWrite(dlgid,'2022','interger',DS_StopMin)
-
-
-## REFERENCIAS REMOTAS
-if REFERENCIAS_REMOTAS:
-    mbusWrite(dlgid,'1962','float',MainRef)
-    if SecRef: mbusWrite(dlgid,'2032','float',SecRef)
+#     ### TEMPORIZADORES
+#     mbusWrite(dlgid,'1982','interger',int('{7}{6}{5}{4}{3}{2}{1}{0}'.format(int(T1_Enable == True),int(T2_Enable == True),int(T3_Enable == True),int(T4_Enable == True),int(T5_Enable == True),int(T6_Enable == True),int(T7_Enable == True),int(DS_Enable == True)),2))
+#     mbusWrite(dlgid,'1983','interger',int('{7}{6}{5}{4}{3}{2}{1}{0}'.format(int(T1_weekMon == True),int(T1_weekTues == True),int(T1_weekWend == True),int(T1_weekThurs == True),int(T1_weekFrid == True),int(T1_weekSat == True),int(T1_weekSund == True),0),2))
+#     mbusWrite(dlgid,'1984','interger',int('{7}{6}{5}{4}{3}{2}{1}{0}'.format(int(T2_weekMon == True),int(T2_weekTues == True),int(T2_weekWend == True),int(T2_weekThurs == True),int(T2_weekFrid == True),int(T2_weekSat == True),int(T2_weekSund == True),0),2))
+#     mbusWrite(dlgid,'1985','interger',int('{7}{6}{5}{4}{3}{2}{1}{0}'.format(int(T3_weekMon == True),int(T3_weekTues == True),int(T3_weekWend == True),int(T3_weekThurs == True),int(T3_weekFrid == True),int(T3_weekSat == True),int(T3_weekSund == True),0),2))
+#     mbusWrite(dlgid,'1986','interger',int('{7}{6}{5}{4}{3}{2}{1}{0}'.format(int(T4_weekMon == True),int(T4_weekTues == True),int(T4_weekWend == True),int(T4_weekThurs == True),int(T4_weekFrid == True),int(T4_weekSat == True),int(T4_weekSund == True),0),2))
+#     mbusWrite(dlgid,'1987','interger',int('{7}{6}{5}{4}{3}{2}{1}{0}'.format(int(T5_weekMon == True),int(T5_weekTues == True),int(T5_weekWend == True),int(T5_weekThurs == True),int(T5_weekFrid == True),int(T5_weekSat == True),int(T5_weekSund == True),0),2))
+#     mbusWrite(dlgid,'1988','interger',int('{7}{6}{5}{4}{3}{2}{1}{0}'.format(int(T6_weekMon == True),int(T6_weekTues == True),int(T6_weekWend == True),int(T6_weekThurs == True),int(T6_weekFrid == True),int(T6_weekSat == True),int(T6_weekSund == True),0),2))
+#     mbusWrite(dlgid,'1989','interger',int('{7}{6}{5}{4}{3}{2}{1}{0}'.format(int(T7_weekMon == True),int(T7_weekTues == True),int(T7_weekWend == True),int(T7_weekThurs == True),int(T7_weekFrid == True),int(T7_weekSat == True),int(T7_weekSund == True),0),2))
+#     mbusWrite(dlgid,'1990','interger',int('{7}{6}{5}{4}{3}{2}{1}{0}'.format(int(DS_weekMon == True),int(DS_weekTues == True),int(DS_weekWend == True),int(DS_weekThurs == True),int(DS_weekFrid == True),int(DS_weekSat == True),int(DS_weekSund == True),0),2))
+#     mbusWrite(dlgid,'1991','interger',T1_StartHour)
+#     mbusWrite(dlgid,'1992','interger',T1_StartMin)
+#     mbusWrite(dlgid,'1993','interger',T1_StopHour)
+#     mbusWrite(dlgid,'1994','interger',T1_StopMin)
+#     mbusWrite(dlgid,'1995','interger',T2_StartHour)
+#     mbusWrite(dlgid,'1996','interger',T2_StartMin)
+#     mbusWrite(dlgid,'1997','interger',T2_StopHour)
+#     mbusWrite(dlgid,'1998','interger',T2_StopMin)
+#     mbusWrite(dlgid,'1999','interger',T3_StartHour)
+#     mbusWrite(dlgid,'2000','interger',T3_StartMin)
+#     mbusWrite(dlgid,'2001','interger',T3_StopHour)
+#     mbusWrite(dlgid,'2002','interger',T3_StopMin)
+#     mbusWrite(dlgid,'2003','interger',T4_StartHour)
+#     mbusWrite(dlgid,'2004','interger',T4_StartMin)
+#     mbusWrite(dlgid,'2005','interger',T4_StopHour)
+#     mbusWrite(dlgid,'2006','interger',T4_StopMin)
+#     mbusWrite(dlgid,'2007','interger',T5_StartHour)
+#     mbusWrite(dlgid,'2008','interger',T5_StartMin)
+#     mbusWrite(dlgid,'2009','interger',T5_StopHour)
+#     mbusWrite(dlgid,'2010','interger',T5_StopMin)
+#     mbusWrite(dlgid,'2011','interger',T6_StartHour)
+#     mbusWrite(dlgid,'2012','interger',T6_StartMin)
+#     mbusWrite(dlgid,'2013','interger',T6_StopHour)
+#     mbusWrite(dlgid,'2014','interger',T6_StopMin)
+#     mbusWrite(dlgid,'2015','interger',T7_StartHour)
+#     mbusWrite(dlgid,'2016','interger',T7_StartMin)
+#     mbusWrite(dlgid,'2017','interger',T7_StopHour)
+#     mbusWrite(dlgid,'2018','interger',T7_StopMin)
+#     mbusWrite(dlgid,'2019','interger',DS_StartHour)
+#     mbusWrite(dlgid,'2020','interger',DS_StartMin)
+#     mbusWrite(dlgid,'2021','interger',DS_StopHour)
+#     mbusWrite(dlgid,'2022','interger',DS_StopMin)
 
 
-## CONFIGURACIONES
-if CONFIGURACIONES:
-    # GENERAL
-    # TIPO DE CONTROL
-    mbusWrite(dlgid,'1961','interger',tipoControl)
-    mbusWrite(dlgid,'1978','interger',referencia)
-    ### ENTRADAS ANALOGICAS
-    mbusWrite(dlgid,'1968','interger',AI0_Imin)
-    mbusWrite(dlgid,'1969','interger',AI0_Imax)
-    mbusWrite(dlgid,'1942','float',AI0_Mmin)
-    mbusWrite(dlgid,'1944','float',AI0_Mmax)
-    mbusWrite(dlgid,'2043','float',AI0_Offset)
-    mbusWrite(dlgid,'1970','interger',AI1_Imin)
-    mbusWrite(dlgid,'1971','interger',AI1_Imax)
-    mbusWrite(dlgid,'1946','float',AI1_Mmin)
-    mbusWrite(dlgid,'1948','float',AI1_Mmax)
-    mbusWrite(dlgid,'2045','float',AI1_Offset)
+# ## REFERENCIAS REMOTAS
+# if REFERENCIAS_REMOTAS:
+#     mbusWrite(dlgid,'1962','float',MainRef)
+#     if SecRef: mbusWrite(dlgid,'2032','float',SecRef)
+
+
+# ## CONFIGURACIONES
+# if CONFIGURACIONES:
+#     # GENERAL
+#     # TIPO DE CONTROL
+#     mbusWrite(dlgid,'1961','interger',tipoControl)
+#     mbusWrite(dlgid,'1978','interger',referencia)
+#     ### ENTRADAS ANALOGICAS
+#     mbusWrite(dlgid,'1968','interger',AI0_Imin)
+#     mbusWrite(dlgid,'1969','interger',AI0_Imax)
+#     mbusWrite(dlgid,'1942','float',AI0_Mmin)
+#     mbusWrite(dlgid,'1944','float',AI0_Mmax)
+#     mbusWrite(dlgid,'2043','float',AI0_Offset)
+#     mbusWrite(dlgid,'1970','interger',AI1_Imin)
+#     mbusWrite(dlgid,'1971','interger',AI1_Imax)
+#     mbusWrite(dlgid,'1946','float',AI1_Mmin)
+#     mbusWrite(dlgid,'1948','float',AI1_Mmax)
+#     mbusWrite(dlgid,'2045','float',AI1_Offset)
     
-    ### ENTRADAS DE PULSOS
-    mbusWrite(dlgid,'1950','interger',CNT0_timeOn)
-    mbusWrite(dlgid,'1951','interger',CNT0_timeOff)
-    mbusWrite(dlgid,'1952','float',CNT0_magpp)
-    mbusWrite(dlgid,'1966','interger',CNT1_timeOn)
-    mbusWrite(dlgid,'1967','interger',CNT1_timeOff)
-    mbusWrite(dlgid,'1964','float',CNT1_magpp)
+#     ### ENTRADAS DE PULSOS
+#     mbusWrite(dlgid,'1950','interger',CNT0_timeOn)
+#     mbusWrite(dlgid,'1951','interger',CNT0_timeOff)
+#     mbusWrite(dlgid,'1952','float',CNT0_magpp)
+#     mbusWrite(dlgid,'1966','interger',CNT1_timeOn)
+#     mbusWrite(dlgid,'1967','interger',CNT1_timeOff)
+#     mbusWrite(dlgid,'1964','float',CNT1_magpp)
     
-    ### SALIDAS ANALOGIAS
-    mbusWrite(dlgid,'1974','float',AO0_Mmin)
-    mbusWrite(dlgid,'1976','float',AO0_Mmax)
-    mbusWrite(dlgid,'1972','interger',AO0_OutMmin)
-    mbusWrite(dlgid,'1973','interger',AO0_OutMmax)
+#     ### SALIDAS ANALOGIAS
+#     mbusWrite(dlgid,'1974','float',AO0_Mmin)
+#     mbusWrite(dlgid,'1976','float',AO0_Mmax)
+#     mbusWrite(dlgid,'1972','interger',AO0_OutMmin)
+#     mbusWrite(dlgid,'1973','interger',AO0_OutMmax)
     
     
     
-    # REFERENCIA REMOTA
-    mbusWrite(dlgid,'2055','float',Ref1Fact)
-    mbusWrite(dlgid,'2047','float',Ref1OffSet)
-    mbusWrite(dlgid,'2057','float',Ref2Fact)
-    mbusWrite(dlgid,'2049','float',Ref2OffSet)
-    mbusWrite(dlgid,'2035','float',Ref1MinValue)
-    mbusWrite(dlgid,'2037','float',Ref1MaxValue)
-    mbusWrite(dlgid,'2039','float',Ref2MinValue)
-    mbusWrite(dlgid,'2041','float',Ref2MaxValue)
+#     # REFERENCIA REMOTA
+#     mbusWrite(dlgid,'2055','float',Ref1Fact)
+#     mbusWrite(dlgid,'2047','float',Ref1OffSet)
+#     mbusWrite(dlgid,'2057','float',Ref2Fact)
+#     mbusWrite(dlgid,'2049','float',Ref2OffSet)
+#     mbusWrite(dlgid,'2035','float',Ref1MinValue)
+#     mbusWrite(dlgid,'2037','float',Ref1MaxValue)
+#     mbusWrite(dlgid,'2039','float',Ref2MinValue)
+#     mbusWrite(dlgid,'2041','float',Ref2MaxValue)
 
-    ### PROTECCIONES
-    mbusWrite(dlgid,'1925','interger',int('{3}{2}{1}{0}'.format(int(AI0_Enab == True),int(AI1_Enab == True),int(Prot1_Enable == True),int(TimerState == True)),2)) 
-    mbusWrite(dlgid,'2059','float',Prot1_Stop)
-    mbusWrite(dlgid,'1979','interger',Prot1_Ref)
-    mbusWrite(dlgid,'2061','float',Prot1_Recover)
+#     ### PROTECCIONES
+#     mbusWrite(dlgid,'1925','interger',int('{3}{2}{1}{0}'.format(int(AI0_Enab == True),int(AI1_Enab == True),int(Prot1_Enable == True),int(TimerState == True)),2)) 
+#     mbusWrite(dlgid,'2059','float',Prot1_Stop)
+#     mbusWrite(dlgid,'1979','interger',Prot1_Ref)
+#     mbusWrite(dlgid,'2061','float',Prot1_Recover)
     
 
 
+print ("Esto funciona");
 
 
-
+mbusWrite('YCHTEST');
 

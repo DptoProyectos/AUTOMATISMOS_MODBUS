@@ -142,7 +142,7 @@ SecRef = 1.19                                                   # Referencia rem
 
 
 ########################################## CONFIGURACIONES ##########################################
-CONFIGURACIONES = False                                          # ENABLE para enviar las configuraciones [True|False]             
+CONFIGURACIONES = True                                          # ENABLE para enviar las configuraciones [True|False]             
 
 ### CONTROL
 tipoControl = 0                                                 # Tipo de control [0->NIVELES LLENADO,1->NIVELES VACIADO,2->EXTERNO,3->CONSIGNA CONT]
@@ -168,8 +168,8 @@ AI1_Offset = 0                                                  # Offset para la
 
 ### ENTRADAS DE PULSOS
 #### CNT0
-CNT0_timeOn = 10                                                # tiempo en On para decir que es válido [VALUE]
-CNT0_timeOff = 100                                              # tiempo en Off para decir que es válido [VALUE]
+CNT0_timeOn = 100                                               # tiempo en On para decir que es válido [VALUE]
+CNT0_timeOff = 200                                              # tiempo en Off para decir que es válido [VALUE]
 CNT0_magpp = 0.010                                              # equivalencia de cada pulsos contra la unidad que se quiere medir [VALUE]
 #
 #### CNT1

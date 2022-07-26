@@ -10,7 +10,7 @@ from datetime import datetime
 from modbusWrite import mbusWrite
 
 
-dlgid  = 'CCPZ010'
+dlgid  = 'CCPZ007'
 
 #
 ########################################## CONTROLES WEB ##########################################
@@ -142,10 +142,10 @@ SecRef = 1.19                                                   # Referencia rem
 
 
 ########################################## CONFIGURACIONES ##########################################
-CONFIGURACIONES = False                                          # ENABLE para enviar las configuraciones [True|False]             
+CONFIGURACIONES = True                                          # ENABLE para enviar las configuraciones [True|False]             
 
 ### CONTROL
-tipoControl = 1                                                 # Tipo de control [0->NIVELES LLENADO,1->NIVELES VACIADO,2->EXTERNO,3->CONSIGNA CONT]
+tipoControl = 2                                                 # Tipo de control [0->NIVELES LLENADO,1->NIVELES VACIADO,2->EXTERNO,3->CONSIGNA CONT]
 referencia = 5                                                  # Referencia a tomar para el control [0->REMOTO,1->AI_0,2->AI_1,3->CNT_0,4->CNT_1,5->BOYAS CONECTADAS EN CNT0 Y CNT1]
 
 

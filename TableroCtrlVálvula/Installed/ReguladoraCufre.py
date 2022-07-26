@@ -33,9 +33,14 @@ CONFIGURACIONES = True                                          # ENABLE para en
 ### CONTROL
 tipoControl = 1                                                 # Tipo de control { 0-> [ OPEN if LevelRef <= MinLevel | CLOSE if LevelRef >= MaxLevel ] }   
                                                                 # Tipo de control { 1-> [ OPEN if LevelRef >= MaxLevel | CLOSE if LevelRef <= MinLevel ] }
+                                                                # Tipo de control { 4-> [ OPEN if LevelRef <= MinLevel | CLOSE if LevelRef >= MaxLevel ] } [1]
+
 referencia = 1                                                  # Referencia para el control [ 0-> REMOTO, 1-> AI_0, 2-> AI_1, 3-> CNT_0, 4-> CNT_1 ]
 Time2OpenValve = 60                                             # Tiempo en segundos que dura el proceso de apertura de valvula [VALUE]
 Time2CloseValve = 90                                            # Tiempo en segundos que dura el proceso de cierre de valvula [VALUE]
+
+# NOTA:
+# 1- Lugo de un proceso de apertura se espera 30 minutos antes de atender cualquier cierre (Solo en modo AUTO) para evitar que las transiciones de presion debido a la apertura provoquen un cierre.
 
 
 ### ENTRADAS ANALOGICAS

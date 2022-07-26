@@ -4,12 +4,13 @@ ENVIO DE CONFIGURACION REMOTA PARA LOS TABLEROS DE CONTROL DE REGULADORAS
 
 @author: Yosniel Cabrera
 
-Version 1.0.3 27-04-2022
+Version 1.0.3 25-07-2022
 ''' 
 from datetime import datetime
 from __CORE__.modbusWrite import mbusWrite
 
 dlgid  = 'SJTQ004'
+# dlgid  = 'SJREGTEST'
 #
 ########################################## CONTROLES WEB ##########################################
 CONTROLES_WEB = False                                           # ENABLE para enviar los controles WEBs [True|False]
@@ -31,11 +32,16 @@ SecRef = 1.19                                                   # Referencia rem
 CONFIGURACIONES = True                                          # ENABLE para enviar las configuraciones [True|False]             
 
 ### CONTROL
-tipoControl = 0                                                 # Tipo de control { 0-> [ OPEN if LevelRef <= MinLevel | CLOSE if LevelRef >= MaxLevel ] }   
+tipoControl = 4                                                 # Tipo de control { 0-> [ OPEN if LevelRef <= MinLevel | CLOSE if LevelRef >= MaxLevel ] }   
                                                                 # Tipo de control { 1-> [ OPEN if LevelRef >= MaxLevel | CLOSE if LevelRef <= MinLevel ] }
-referencia = 0                                                  # Referencia para el control [ 0-> REMOTO, 1-> AI_0, 2-> AI_1, 3-> CNT_0, 4-> CNT_1 ]
-Time2OpenValve = 180                                             # Tiempo en segundos que dura el proceso de apertura de valvula [VALUE]
-Time2CloseValve = 300                                            # Tiempo en segundos que dura el proceso de cierre de valvula [VALUE]
+                                                                # Tipo de control { 4-> [ OPEN if LevelRef <= MinLevel | CLOSE if LevelRef >= MaxLevel ] } [1]
+referencia = 1                                                  # Referencia para el control [ 0-> REMOTO, 1-> AI_0, 2-> AI_1, 3-> CNT_0, 4-> CNT_1 ]
+Time2OpenValve = 180                                            # Tiempo en segundos que dura el proceso de apertura de valvula [VALUE]
+Time2CloseValve = 180                                           # Tiempo en segundos que dura el proceso de cierre de valvula [VALUE]
+
+
+# NOTA:
+# 1- Lugo de un proceso de apertura se espera 30 minutos antes de atender cualquier cierre (Solo en modo AUTO) para evitar que las transiciones de presion debido a la apertura provoquen un cierre.
 
 
 ### ENTRADAS ANALOGICAS
