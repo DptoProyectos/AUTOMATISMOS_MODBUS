@@ -170,7 +170,7 @@ AI1_Offset = 0                                                  # Offset para la
 #### CNT0
 CNT0_timeOn = 10                                                # tiempo en On para decir que es válido [VALUE]
 CNT0_timeOff = 100                                              # tiempo en Off para decir que es válido [VALUE]
-CNT0_magpp = 0.010                                              # equivalencia de cada pulsos contra la unidad que se quiere medir [VALUE]
+CNT0_magpp = 0.1                                              # equivalencia de cada pulsos contra la unidad que se quiere medir [VALUE]
 #
 #### CNT1
 CNT1_timeOn = 10                                                # tiempo en On para decir que es válido [VALUE]

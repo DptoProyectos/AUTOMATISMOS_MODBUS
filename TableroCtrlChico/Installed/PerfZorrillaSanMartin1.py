@@ -142,7 +142,7 @@ SecRef = 1.19                                                   # Referencia rem
 
 
 ########################################## CONFIGURACIONES ##########################################
-CONFIGURACIONES = True                                          # ENABLE para enviar las configuraciones [True|False]             
+CONFIGURACIONES = False                                          # ENABLE para enviar las configuraciones [True|False]             
 
 ### CONTROL
 tipoControl = 0                                                 # Tipo de control [0->NIVELES LLENADO,1->NIVELES VACIADO,2->EXTERNO,3->CONSIGNA CONT]
@@ -175,7 +175,7 @@ CNT0_magpp = 0.010                                              # equivalencia d
 #### CNT1
 CNT1_timeOn = 10                                                # tiempo en On para decir que es válido [VALUE]
 CNT1_timeOff = 100                                              # tiempo en Off para decir que es válido [VALUE]
-CNT1_magpp = 0.010                                              # equivalencia de cada pulsos contra la unidad que se quiere medir [VALUE]
+CNT1_magpp = 0.1                                              # equivalencia de cada pulsos contra la unidad que se quiere medir [VALUE]
 
 ### SALIDAS ANALOGIAS
 AO0_Mmin = 0                                                    # valor minimo de la magnitud a escalar en la salida [VALUE]
